@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {NewComponent} from "./NewComponent";
-import {Cars} from "./Cars";
+import React, {MouseEvent} from 'react';
+import {Button} from "./components/Button";
+// import {NewComponent} from "./NewComponent";
+// import {Cars} from "./Cars";
 
 function App() {
     // const [students, setStudents] = useState([
@@ -18,15 +19,57 @@ function App() {
     //     ]
     // )
 
-    const topCars = [
-        {manufacturer:'BMW', model:'m5cs'},
-        {manufacturer:'Mercedes', model:'e63s'},
-        {manufacturer:'Audi', model:'rs6'}
-    ]
+    // const topCars = [
+    //     {manufacturer:'BMW', model:'m5cs'},
+    //     {manufacturer:'Mercedes', model:'e63s'},
+    //     {manufacturer:'Audi', model:'rs6'}
+    // ]
+
+    // const myFirstSubscriber = () => {
+    //     console.log("Hello!")
+    // }
+    // const mySecondSubscriber = () => {
+    //     console.log("Hello, I'm second!")
+    // }
+
+    // const onClickHandler = (name: string) => {
+    //     console.log(`Hello ${name}`)
+    // }
+
+    const Button1Foo = (name: string, age: number) => {
+        console.log(`Hello ${name}, ${age}`)
+    }
+
+    const Button2Foo = () => {
+        console.log("Hello Mila")
+    }
+
+    // const foo1 = () => {
+    //     console.log(100200)
+    // }
+    // const foo2 = (num: number) => {
+    //     console.log(num)
+    // }
 
     return (
         //<NewComponent students={students}/>
-        <Cars cars={topCars}/>
+        // <Cars cars={topCars}/>
+        <>
+            {/*<button onClick={() => {*/}
+            {/*    console.log("Hello")*/}
+            {/*}}>Subscribe 1*/}
+            {/*</button>*/}
+
+            {/*<button onClick={event => onClickHandler("Tanya")}>Subscribe 1</button>*/}
+            {/*<button onClick={event => onClickHandler("Mila")}>Subscribe 2</button>*/}
+
+            <Button name={"YouTube channel 1"} callBack={()=>Button1Foo("Tanya", 26)}/>
+            <Button name={"YouTube channel 2"} callBack={Button2Foo}/>
+
+            {/*<button onClick={foo1}>1</button>*/}
+            {/*<button onClick={()=>foo2(100200)}>2</button>*/}
+        </>
+
     );
 }
 
