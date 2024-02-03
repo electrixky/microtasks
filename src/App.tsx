@@ -1,4 +1,4 @@
-import React, {MouseEvent} from 'react';
+import React, {MouseEvent, useState} from 'react';
 import {Button} from "./components/Button";
 // import {NewComponent} from "./NewComponent";
 // import {Cars} from "./Cars";
@@ -36,13 +36,13 @@ function App() {
     //     console.log(`Hello ${name}`)
     // }
 
-    const Button1Foo = (name: string, age: number) => {
-        console.log(`Hello ${name}, ${age}`)
-    }
-
-    const Button2Foo = () => {
-        console.log("Hello Mila")
-    }
+    // const Button1Foo = (name: string, age: number) => {
+    //     console.log(`Hello ${name}, ${age}`)
+    // }
+    //
+    // const Button2Foo = () => {
+    //     console.log("Hello Mila")
+    // }
 
     // const foo1 = () => {
     //     console.log(100200)
@@ -50,6 +50,14 @@ function App() {
     // const foo2 = (num: number) => {
     //     console.log(num)
     // }
+    //let a = 1
+    let [a, setA] = useState(1)
+    const onClickIncrement = () => {
+        setA(++a)
+    }
+    const onClickHReset = () => {
+        setA(a = 0)
+    }
 
     return (
         //<NewComponent students={students}/>
@@ -63,11 +71,15 @@ function App() {
             {/*<button onClick={event => onClickHandler("Tanya")}>Subscribe 1</button>*/}
             {/*<button onClick={event => onClickHandler("Mila")}>Subscribe 2</button>*/}
 
-            <Button name={"YouTube channel 1"} callBack={()=>Button1Foo("Tanya", 26)}/>
-            <Button name={"YouTube channel 2"} callBack={Button2Foo}/>
+            {/*<Button name={"YouTube channel 1"} callBack={()=>Button1Foo("Tanya", 26)}/>*/}
+            {/*<Button name={"YouTube channel 2"} callBack={Button2Foo}/>*/}
 
             {/*<button onClick={foo1}>1</button>*/}
             {/*<button onClick={()=>foo2(100200)}>2</button>*/}
+
+            <h1>{a}</h1>
+            <button onClick={onClickIncrement}>number</button>
+            <button onClick={onClickHReset}>0</button>
         </>
 
     );
