@@ -3,6 +3,8 @@ import {Button} from "./components/Button";
 // import {NewComponent} from "./NewComponent";
 // import {Cars} from "./Cars";
 
+type FilterType = "All" | "Dollars" | "Rubles"
+
 function App() {
     // const [students, setStudents] = useState([
     //         {id: 1, name: "James", age: 8},
@@ -18,6 +20,34 @@ function App() {
     //         {id: 11, name: "Christopher", age: 100},
     //     ]
     // )
+
+    const [money, setMoney] = useState([
+        {banknote: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknote: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknote: 'Rubls', value: 100, number: ' w1234567890'},
+        {banknote: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknote: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknote: 'Rubls', value: 100, number: ' r1234567890'},
+        {banknote: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknote: 'Rubls', value: 50, number: ' v1234567890'},
+    ])
+
+    const [filter, setFilter] = useState<FilterType>("All")
+    let currentMoney = money
+
+    if (filter === "Dollars") {
+        currentMoney = money.filter(filteredMoney => filteredMoney.banknote === 'Dollar')
+    }
+    if (filter === 'Rubles') {
+        currentMoney = money.filter(filteredMoney => filteredMoney.banknote === 'Ruble')
+    }
+
+    const onClickFilterHandler = (nameButton: FilterType) => {
+
+        setFilter(nameButton)
+
+    }
+
 
     // const topCars = [
     //     {manufacturer:'BMW', model:'m5cs'},
@@ -51,13 +81,13 @@ function App() {
     //     console.log(num)
     // }
     //let a = 1
-    let [a, setA] = useState(1)
-    const onClickIncrement = () => {
-        setA(++a)
-    }
-    const onClickHReset = () => {
-        setA(a = 0)
-    }
+    // let [a, setA] = useState(1)
+    // const onClickIncrement = () => {
+    //     setA(++a)
+    // }
+    // const onClickHReset = () => {
+    //     setA(a = 0)
+    // }
 
     return (
         //<NewComponent students={students}/>
@@ -77,9 +107,26 @@ function App() {
             {/*<button onClick={foo1}>1</button>*/}
             {/*<button onClick={()=>foo2(100200)}>2</button>*/}
 
-            <h1>{a}</h1>
-            <button onClick={onClickIncrement}>number</button>
-            <button onClick={onClickHReset}>0</button>
+            {/*<h1>{a}</h1>*/}
+            {/*<button onClick={onClickIncrement}>number</button>*/}
+            {/*<button onClick={onClickHReset}>0</button>*/}
+
+            <ul>
+                {currentMoney.map((objFromMoneyArr, index) => {
+                    return (
+                        <li key={index}>
+                            <span>{objFromMoneyArr.banknote} </span>
+                            <span>{objFromMoneyArr.value} </span>
+                            <span>{objFromMoneyArr.number}</span>
+                        </li>
+                    )
+                })}
+            </ul>
+            <div style={{marginLeft: "30px"}}>
+                <button onClick={() => onClickFilterHandler("All")}>All</button>
+                <button onClick={() => onClickFilterHandler("Rubles")}>Ruble</button>
+                <button onClick={() => onClickFilterHandler("Dollars")}>Dollar</button>
+            </div>
         </>
 
     );
