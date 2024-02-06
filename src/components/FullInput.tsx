@@ -21,7 +21,7 @@ export const FullInput = ({addMessage}: FullInputPropsType) => {
     return (
         <div>
             <div>
-                <input value={title} onChange={onChangeInputHandler} type="text"/>
+                <input value={title} onChange={onChangeInputHandler}/>
                 <button onClick={onClickButtonHandler}>+</button>
             </div>
         </div>
